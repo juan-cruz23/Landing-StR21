@@ -1,0 +1,234 @@
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  cursor: pointer;
+}
+
+.gate__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.gate__media .media--gate {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  filter: brightness(0.85);
+}
+
+.gate__scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(14, 14, 12, 0.25) 0%, rgba(14, 14, 12, 0.75) 100%),
+              linear-gradient(180deg, rgba(14, 14, 12, 0.55) 0%, rgba(14, 14, 12, 0.2) 50%, rgba(14, 14, 12, 0.75) 100%);
+  pointer-events: none;
+}
+
+/* Transition video — hidden until ENTRAR is clicked */
+.gate__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.6s ease-out;
+}
+
+.gate__video.is-visible {
+  opacity: 1;
+}
+
+/* Editorial poster composition matching magazine layout grid */
+.gate__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.75rem, 4.5vw, 3.5rem);
+  transition: opacity 0.4s var(--ease-out);
+  pointer-events: auto;
+}
+
+/* 1. Top Editorial Bar */
+.gate__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 241, 0.9);
+}
+
+.gate__brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-paper);
+}
+
+.gate__nav-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0.85;
+}
+
+.gate__bullet {
+  color: var(--color-accent);
+}
+
+.gate__tag {
+  font-family: var(--font-body);
+  opacity: 0.75;
+}
+
+/* 2. Main Middle Section Grid */
+.gate__main {
+  width: 100%;
+  padding-left: clamp(2.5rem, 7.5vw, 8.5rem);
+}
+
+.gate__hero-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.gate__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--color-paper);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+  margin: 0;
+}
+
+.gate__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.2vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-top: 0.6rem;
+}
+
+.gate__action {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+.gate__enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: clamp(0.85rem, 1.4vw, 1.15rem) clamp(1.75rem, 2.8vw, 2.75rem);
+  border-radius: 9999px;
+  border: 1px solid rgba(247, 245, 241, 0.45);
+  background: rgba(14, 14, 12, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--color-paper);
+  font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.4s var(--ease-out);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.gate__enter:hover {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border-color: var(--color-paper);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+
+.gate__enter-arrow {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.gate__enter:hover .gate__enter-arrow {
+  transform: translateX(4px);
+}
+
+.gate__cue {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: rgba(247, 245, 241, 0.75);
+}
+
+/* 3. Bottom Editorial Bar */
+.gate__bottom {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(2rem, 5vw, 6rem);
+  width: 100%;
+}
+
+.gate__code {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(247, 245, 241, 0.85);
+  flex-shrink: 0;
+}
+
+.gate__desc {
+  max-width: 52ch;
+  font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+  line-height: 1.6;
+  font-weight: 400;
+  color: rgba(247, 245, 241, 0.82);
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .gate__nav-meta {
+    display: none;
+  }
+
+  .gate__main {
+    padding-left: 0;
+  }
+
+  .gate__action {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .gate__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lake House Nº21 — Parcelación Saint Regis</title>
+    <meta
+      name="description"
+      content="Lake House Nº21, en la parcelación Saint Regis. Una residencia unifamiliar de alto standing en venta, concebida sin límites entre la arquitectura, la luz y el paisaje."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%230e0e0c'/%3E%3Cpath d='M4 13 12 6l8 7M6 12v7h4v-4h4v4h4v-7' stroke='%23c9a35c' stroke-width='1.4' fill='none'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+      <span class="preloader__mark">LH21</span>
+    </div>
+
+    <!-- Gate: editorial aerial Saint Regis intro splash screen -->
+    <div class="gate" id="gate">
+      <div class="gate__media">
+        <img
+          class="media media--gate"
+          src="/images/gate/saint-regis-aerial.jpg"
+          alt="Vista aérea de la parcelación Saint Regis"
+          data-i18n-fallback="gate.mediaLabel"
+        />
+        <div class="gate__scrim"></div>
+      </div>
+      <!-- Transition video: aerial → facade — plays on ENTRAR click -->
+      <video class="gate__video" id="gateVideo" muted playsinline preload="auto" tabindex="-1">
+        <source src="/videos/saint-regis-to-lakehouse.mp4" type="video/mp4" />
+      </video>
+      <div class="gate__content" id="gateContent">
+        <!-- Top Editorial Bar -->
+        <div class="gate__top">
+          <span class="gate__brand" data-i18n="header.propertyName">LAKE HOUSE Nº21</span>
+          <div class="gate__nav-meta">
+            <span data-i18n="gate.eyebrow">PARCELACIÓN SAINT REGIS</span>
+            <span class="gate__bullet">•</span>
+            <span>RIONEGRO</span>
+          </div>
+          <span class="gate__tag">(2026)</span>
+        </div>
+
+        <!-- Main Middle Grid -->
+        <div class="gate__main">
+          <div class="gate__hero-title">
+            <h1 class="gate__title" data-i18n="header.propertyName">LAKE HOUSE Nº21</h1>
+            <p class="gate__subtitle" data-i18n="gate.eyebrow">PARCELACIÓN SAINT REGIS</p>
+            <div class="gate__action">
+              <button type="button" class="gate__enter" id="gateEnter">
+                <span data-i18n="gate.enter">ENTRAR</span>
+                <svg class="gate__enter-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+              <span class="gate__cue">(click para explorar)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Editorial Bar -->
+        <div class="gate__bottom">
+          <div class="gate__code">(001)</div>
+          <p class="gate__desc" data-i18n="gate.desc">
+            Diseñado por CNTXT arquitectura en Medellín, Colombia
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side drawer menu -->
+    <nav class="drawer" id="drawer" aria-hidden="true">
+      <ul class="drawer__list">
+        <li><a href="#overview" data-i18n="nav.overview" class="drawer__link">Concepto</a></li>
+        <li><a href="#gallery" data-i18n="nav.gallery" class="drawer__link">Galería</a></li>
+        <li><a href="#floorplans" data-i18n="nav.floorplans" class="drawer__link">Distribución</a></li>
+        <li><a href="#interior" data-i18n="nav.interior" class="drawer__link">Interior</a></li>
+
+        <li><a href="#amenities" data-i18n="nav.amenities" class="drawer__link">Amenidades</a></li>
+        <li><a href="#contact" data-i18n="nav.contact" class="drawer__link">Contacto</a></li>
+      </ul>
+      <a href="#contact" class="drawer__cta" data-i18n="nav.cta">Agendar visita</a>
+    </nav>
+    <div class="drawer__background" id="drawerBackground"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+      <a href="#top" class="header__logo" data-i18n="header.propertyName">LAKE HOUSE Nº21</a>
+      <div class="header__right">
+        <div class="lang-switch" id="langSwitch" role="group" aria-label="Idioma">
+          <button type="button" class="lang-switch__btn is-active" data-lang="es">ES</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" class="lang-switch__btn" data-lang="en">EN</button>
+        </div>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="drawer">
+          <span class="menu-toggle__label">Menú</span>
+          <span class="menu-toggle__icon"><span></span><span></span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- 1. Hero — pinned parallax: background / text / building cutout,
+           each scrubbed at a different rate while the section stays pinned
+           (see src/js/hero-pin.js). -->
+      <section class="hero" id="hero">
+        <div class="hero__pin">
+          <div class="hero__media" data-parallax-layer="background">
+            <img
+              class="media media--hero"
+              src="/images/hero/facade-main.webp"
+              alt="Fachada principal de Lake House Nº21"
+              data-i18n-fallback="hero.mediaLabel"
+            />
+          </div>
+          <div class="hero__scrim"></div>
+          <div class="hero__content" data-parallax-layer="text">
+            <p class="eyebrow" data-i18n="hero.eyebrow">PARCELACIÓN SAINT REGIS</p>
+            <h1 class="hero__title" data-i18n="hero.title">DONDE LA <strong>ARQUITECTURA</strong><br />SE VUELVE<br /><strong>HOGAR</strong></h1>
+            <p class="hero__subtitle" data-i18n="hero.subtitle">
+              Una residencia unifamiliar concebida sin límites entre el diseño, la luz y el paisaje.
+            </p>
+            <a href="#contact" class="hero__cta" data-i18n="hero.priceCta">CONSULTAR PRECIO</a>
+          </div>
+          <div class="hero__building" data-parallax-layer="building">
+            <img
+              class="media media--building"
+              src="/images/hero/facade-cutout.webp"
+              alt="Lake House Nº21"
+              data-i18n-fallback="hero.buildingFallback"
+            />
+          </div>
+          <a href="#overview" class="scroll-cue" data-i18n="hero.scrollCue">
+            <span>DESLIZA</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Divider: the header logo scales up through this bar as it
+           scrolls past the fixed header (see src/js/logo-scale.js). -->
+      <div class="section-divider" id="sectionDivider"></div>
+
+      <!-- 2. Overview / Concepto — big statement on solid black, horizontal
+           format, right after the sticky divider bar. -->
+      <section class="overview-statement" id="overview">
+        <p class="eyebrow" data-i18n="overview.eyebrow">01 — CONCEPTO</p>
+        <h2 class="overview-statement__title" data-reveal data-i18n="overview.title">UNA OBRA PENSADA<br />PARA VIVIRSE</h2>
+        <div class="overview-statement__row">
+          <dl class="overview-statement__highlights" data-reveal>
+            <div class="overview-statement__highlight overview-statement__highlight--lead">
+              <svg class="overview-statement__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              <dt data-i18n="overview.highlightLocationValue">SAINT REGIS</dt>
+              <dd data-i18n="overview.highlightLocationLabel">Parcelación</dd>
+            </div>
+            <div class="overview-statement__highlight">
+              <svg class="overview-statement__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12l19-9-9 19-2-8-8-2z" />
+              </svg>
+              <dt>7 MIN</dt>
+              <dd data-i18n="overview.highlight1">Aeropuerto JMC</dd>
+            </div>
+            <div class="overview-statement__highlight">
+              <svg class="overview-statement__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 20V10a8 8 0 0 1 16 0v10" />
+                <path d="M4 20h4M16 20h4M9 20v-6M15 20v-6" />
+              </svg>
+              <dt>8 MIN</dt>
+              <dd data-i18n="overview.highlight2">Túnel de Oriente</dd>
+            </div>
+            <div class="overview-statement__highlight">
+              <svg class="overview-statement__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 21h18M5 21V7l5-3v17M14 21V11l5-2v12" />
+              </svg>
+              <dt>30 MIN</dt>
+              <dd data-i18n="overview.highlight3">Medellín</dd>
+            </div>
+            <div class="overview-statement__highlight">
+              <svg class="overview-statement__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <path d="M12 8v8M8 12h8" />
+              </svg>
+              <dt>3 MIN</dt>
+              <dd data-i18n="overview.highlight4">Hospital San Vicente Fundación</dd>
+            </div>
+            <div class="overview-statement__highlight">
+              <svg class="overview-statement__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 8h12l-1 12H7L6 8z" />
+                <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+              </svg>
+              <dt>10 MIN</dt>
+              <dd data-i18n="overview.highlight5">Centros comerciales y malls</dd>
+            </div>
+          </dl>
+          <p class="overview-statement__text" data-reveal data-i18n="overview.text">
+            Como una <strong>escultura habitable</strong>, esta residencia dialoga con su entorno y
+            transforma cada recorrido interior en una <strong>experiencia sensorial</strong>. Volúmenes
+            puros, materiales nobles y luz natural definen un hogar que <strong>no sigue tendencias</strong>:
+            las establece.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Galería -->
+      <!-- Exterior gallery — horizontal scroll: vertical page-scroll drives
+           horizontal movement of the track while the section stays pinned
+           (see src/js/gallery-scroll.js). Falls back to a plain wrapped
+           row under prefers-reduced-motion / before JS runs. Click any
+           photo to open it in the lightbox (src/js/lightbox.js). -->
+      <section class="gallery" id="gallery">
+        <div class="gallery__pin">
+          <div class="gallery__track" id="galleryTrack">
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/gallery/fachada-principal.webp" alt="Fachada principal" data-i18n-fallback="gallery.img1.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/gallery/llegada.webp" alt="Llegada" data-i18n-fallback="gallery.img2.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/gallery/acceso.jpg" alt="Acceso y garaje" data-i18n-fallback="gallery.img3.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/gallery/jardin.webp" alt="Jardín" data-i18n-fallback="gallery.img4.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/gallery/terraza.jpg" alt="Terraza" data-i18n-fallback="gallery.img5.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/gallery/vista-lago.webp" alt="Vista al lago" data-i18n-fallback="gallery.img6.label" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lightbox for the gallery — a single shared overlay, filled in by
+           src/js/lightbox.js on click. -->
+      <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="lightbox__image" id="lightboxImage" src="" alt="" />
+      </div>
+
+      <!-- Property specs — icon + big number + label, spread across the
+           section (4 columns), right below the gallery. -->
+      <section class="gallery__specs" id="specs">
+        <div class="gallery__specs-container" data-reveal>
+          <div class="gallery__specs-header">
+            <p class="eyebrow gallery__specs-eyebrow" data-i18n="specs.eyebrow">ESPECIFICACIONES</p>
+          </div>
+          <div class="gallery__specs-grid">
+            <div class="specs-item">
+              <svg class="specs-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 21h18M5 21V7l7-4 7 4v14" />
+                <path d="M9 10h6M9 14h6" />
+              </svg>
+              <p class="specs-item__value">543.14<span class="specs-item__unit">m²</span></p>
+              <p class="specs-item__label" data-i18n="specs.areaConstruida">Área Construida</p>
+            </div>
+
+            <div class="specs-item">
+              <svg class="specs-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 18v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5" />
+                <path d="M4 11V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3" />
+                <path d="M12 11V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3" />
+                <path d="M2 18h20" />
+              </svg>
+              <p class="specs-item__value">4</p>
+              <p class="specs-item__label" data-i18n="specs.bedrooms">Habitaciones</p>
+            </div>
+
+            <div class="specs-item">
+              <svg class="specs-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z" />
+                <path d="M6 12V5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2" />
+                <circle cx="9" cy="9" r="1.2" fill="currentColor" />
+              </svg>
+              <p class="specs-item__value">5<span class="specs-item__unit"></span></p>
+              <p class="specs-item__label" data-i18n="specs.bathrooms">Baños</p>
+            </div>
+
+            <div class="specs-item">
+              <svg class="specs-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg>
+              <p class="specs-item__value">1428.73<span class="specs-item__unit">m²</span></p>
+              <p class="specs-item__label" data-i18n="specs.lotArea">Área de Lote</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Distribución — editorial floor-plan viewer (ref: LOFTEC-style
+           configurator): a vertical level rail on the left, the plan PNG
+           large and centered with no box around it, a caption naming the
+           current floor, and a compass for orientation. Reveals directly
+           under the pinned/fading specs section, see
+           src/js/section-transitions.js. -->
+      <section class="section floorplans" id="floorplans">
+        <div class="section__intro floorplans__intro" data-reveal>
+          <p class="eyebrow" data-i18n="floorplans.eyebrow">02 — DISTRIBUCIÓN</p>
+        </div>
+        <div class="floorplans__viewer" data-reveal>
+          <div class="floorplans__rail">
+            <p class="floorplans__rail-label" data-i18n="floorplans.levelLabel">NIVEL</p>
+            <div class="floorplans__levels" role="group" aria-label="Cambiar de piso">
+              <button
+                type="button"
+                class="floorplans__level"
+                data-plan-src="/images/floorplans/piso-2.webp"
+                data-plan-fallback="floorplans.tab2"
+                data-plan-name="floorplans.tab2"
+                data-plan-expand="/images/floorplans/PLANTA%202.webp"
+                aria-label="Segundo piso"
+              >
+                02
+              </button>
+              <button
+                type="button"
+                class="floorplans__level is-active"
+                data-plan-src="/images/floorplans/piso-1.webp"
+                data-plan-fallback="floorplans.tab1"
+                data-plan-name="floorplans.tab1"
+                data-plan-expand="/images/floorplans/PLANTA%201.webp"
+                aria-label="Primer piso"
+              >
+                01
+              </button>
+            </div>
+          </div>
+
+          <div class="floorplans__stage">
+            <button type="button" class="floorplans__expand" id="floorplanExpand" aria-label="Ampliar plano">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 4H4v4M16 4h4v4M8 20H4v-4M16 20h4v-4" />
+              </svg>
+            </button>
+            <div class="floorplans__rotate-row">
+              <button type="button" class="floorplans__rotate-btn" id="floorplanRotateLeft" aria-label="Ver plano en horizontal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="1 4 1 10 7 10" />
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+                </svg>
+              </button>
+              <div class="floorplans__image-wrap" id="floorplansWrap">
+                <img class="floorplans__image" id="floorplanImage" src="/images/floorplans/piso-1.webp" alt="Plano — primer piso" />
+                <svg class="floorplan-svg" id="floorplanSvg" viewBox="0 0 100 100"></svg>
+                <div class="floorplan-tooltip" id="floorplanTooltip" aria-hidden="true"></div>
+                <div class="media media--placeholder floorplans__fallback media--hidden" id="floorplanFallback"></div>
+              </div>
+              <button type="button" class="floorplans__rotate-btn" id="floorplanRotateRight" aria-label="Ver plano en vertical">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="23 4 23 10 17 10" />
+                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+                </svg>
+              </button>
+            </div>
+            <p class="floorplans__caption" id="floorplanCaption" data-i18n="floorplans.tab1">PRIMER PISO</p>
+            <svg class="floorplans__compass" id="floorplanCompass" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="1" opacity="0.35" />
+              <line x1="32" y1="8" x2="32" y2="16" stroke="currentColor" stroke-width="1" opacity="0.5" />
+              <line x1="32" y1="48" x2="32" y2="56" stroke="currentColor" stroke-width="1" opacity="0.5" />
+              <line x1="8" y1="32" x2="16" y2="32" stroke="currentColor" stroke-width="1" opacity="0.5" />
+              <line x1="48" y1="32" x2="56" y2="32" stroke="currentColor" stroke-width="1" opacity="0.5" />
+              <text x="32" y="12" text-anchor="middle" font-size="7" fill="currentColor">N</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Interior — horizontal scroll gallery, identical structure to #gallery.
+           Vertical page-scroll drives horizontal movement of the track while the
+           section stays pinned (gallery-scroll.js). Click any photo → lightbox. -->
+      <section class="gallery" id="interior">
+        <div class="gallery__pin">
+          <div class="gallery__track" id="interiorTrack">
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/interior/interior-1.webp" alt="Interior — vista 1" data-i18n-fallback="interior.img1.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/interior/interior-2.webp" alt="Interior — vista 2" data-i18n-fallback="interior.img2.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/interior/interior-3.webp" alt="Interior — vista 3" data-i18n-fallback="interior.img3.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/interior/interior-4.webp" alt="Interior — vista 4" data-i18n-fallback="interior.img4.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/interior/interior-5.webp" alt="Interior — vista 5" data-i18n-fallback="interior.img5.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/interior/interior-6.webp" alt="Interior — vista 6" data-i18n-fallback="interior.img6.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/interior/interior-7.webp" alt="Interior — vista 7" data-i18n-fallback="interior.img7.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/interior/interior-8.webp" alt="Interior — vista 8" data-i18n-fallback="interior.img8.label" />
+            </button>
+            <button type="button" class="gallery__item">
+              <img class="media" src="/images/interior/interior-9.webp" alt="Interior — vista 9" data-i18n-fallback="interior.img9.label" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Amenidades -->
+      <section class="section amenities" id="amenities" data-reveal>
+        <p class="eyebrow amenities__eyebrow" data-i18n="amenities.eyebrow">04 — AMENIDADES</p>
+        <ul class="amenities__grid">
+
+          <li class="amenities__card">
+            <span class="amenities__index">01</span>
+            <span class="amenities__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 4 L42 12 L42 26 Q42 38 24 44 Q6 38 6 26 L6 12 Z"/>
+                <path d="M16 24 l6 6 10-12"/>
+              </svg>
+            </span>
+            <span class="amenities__name" data-i18n="amenities.item1">Seguridad 24/7</span>
+          </li>
+
+          <li class="amenities__card">
+            <span class="amenities__index">02</span>
+            <span class="amenities__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 6 L24 24"/>
+                <path d="M24 24 L14 36"/>
+                <path d="M24 24 L34 36"/>
+                <path d="M8 42 h32"/>
+                <path d="M16 13 Q24 5 32 13" stroke-dasharray="3 3"/>
+                <circle cx="24" cy="24" r="3.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <span class="amenities__name" data-i18n="amenities.item2">Energía Subterránea</span>
+          </li>
+
+          <li class="amenities__card">
+            <span class="amenities__index">03</span>
+            <span class="amenities__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 30 Q12 20 24 25 Q36 30 44 20"/>
+                <path d="M4 38 Q12 28 24 33 Q36 38 44 28"/>
+                <path d="M24 8 L24 20"/>
+                <path d="M18 14 L24 8 L30 14"/>
+              </svg>
+            </span>
+            <span class="amenities__name" data-i18n="amenities.item3">Lago interno con salida desde el lote</span>
+          </li>
+
+          <li class="amenities__card">
+            <span class="amenities__index">04</span>
+            <span class="amenities__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="14" width="36" height="22" rx="1"/>
+                <path d="M16 14 V10 M32 14 V10"/>
+                <path d="M6 24 h36"/>
+                <path d="M18 24 v12"/>
+              </svg>
+            </span>
+            <span class="amenities__name" data-i18n="amenities.item4">Salón social</span>
+          </li>
+
+          <li class="amenities__card">
+            <span class="amenities__index">05</span>
+            <span class="amenities__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="15" cy="24" rx="9" ry="15"/>
+                <ellipse cx="33" cy="24" rx="9" ry="15"/>
+                <line x1="24" y1="9" x2="24" y2="39"/>
+                <circle cx="15" cy="12" r="2.5" fill="currentColor" stroke="none"/>
+                <circle cx="33" cy="36" r="2.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <span class="amenities__name" data-i18n="amenities.item5">2 canchas de tenis</span>
+          </li>
+
+          <li class="amenities__card">
+            <span class="amenities__index">06</span>
+            <span class="amenities__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="8" width="36" height="32" rx="1"/>
+                <line x1="24" y1="8" x2="24" y2="40"/>
+                <line x1="6" y1="24" x2="42" y2="24"/>
+                <circle cx="15" cy="16" r="2.5" fill="currentColor" stroke="none"/>
+                <circle cx="33" cy="32" r="2.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <span class="amenities__name" data-i18n="amenities.item6">Cancha polideportiva</span>
+          </li>
+
+          <li class="amenities__card">
+            <span class="amenities__index">07</span>
+            <span class="amenities__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 40 L14 26 Q14 10 24 10 Q34 10 34 26 L34 40"/>
+                <path d="M8 40 h32"/>
+                <path d="M18 26 Q24 19 30 26"/>
+                <circle cx="24" cy="7" r="3.5"/>
+              </svg>
+            </span>
+            <span class="amenities__name" data-i18n="amenities.item7">Gimnasio</span>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- 8. Video cinemático -->
+      <section class="section cinematic" id="cinematic">
+        <div class="cinematic__media" data-parallax data-parallax-speed="0.3">
+          <video
+            class="media media--cinematic"
+            id="cinematicVideo"
+            src="/videos/recorrido-a%C3%A9reo.mp4"
+            muted
+            playsinline
+            loop
+            preload="metadata"
+          ></video>
+          <div class="media media--placeholder media--cinematic media--hidden" id="cinematicFallback" data-i18n="cinematic.mediaLabel">
+            VIDEO — RECORRIDO AÉREO
+          </div>
+        </div>
+        <div class="cinematic__content" data-reveal>
+          <p class="eyebrow" data-i18n="cinematic.eyebrow">05</p>
+          <h2 class="section__title cinematic__title" data-i18n="cinematic.title">UNA <strong>EXPERIENCIA</strong> QUE SE<br />SIENTE ANTES DE <strong>VERSE</strong></h2>
+          <button type="button" class="play-btn" id="cinematicPlayBtn">
+            <span class="play-btn__icon" aria-hidden="true"></span>
+            <span id="cinematicPlayLabel" data-i18n="cinematic.playLabel">REPRODUCIR</span>
+          </button>
+          <a href="#contact" class="cinematic__cta" data-i18n="nav.cta">Agendar visita</a>
+        </div>
+      </section>
+
+      <!-- 9. Contacto -->
+      <section class="section contact" id="contact">
+        <div class="contact__intro" data-reveal>
+          <p class="eyebrow" data-i18n="contact.eyebrow">06 — CONTACTO</p>
+          <h2 class="section__title" data-i18n="contact.title">AGENDA TU<br />VISITA PRIVADA</h2>
+          <p class="section__text" data-i18n="contact.text">
+            Completa el formulario y un asesor se pondrá en contacto contigo en menos de 24 horas.
+          </p>
+          <div class="agent-card">
+            <p class="agent-card__name" data-i18n="contact.agentName">María Fernanda Ríos</p>
+            <p class="agent-card__role" data-i18n="contact.agentRole">Asesora inmobiliaria</p>
+            <p class="agent-card__detail" data-i18n="contact.agentPhone">+57 300 000 0000</p>
+            <p class="agent-card__detail" data-i18n="contact.agentEmail">contacto@lakehouse21.com</p>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" data-reveal novalidate>
+          <div class="field">
+            <label for="name" data-i18n="contact.formName">Nombre</label>
+            <input type="text" id="name" name="name" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email" data-i18n="contact.formEmail">Correo electrónico</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="phone" data-i18n="contact.formPhone">Teléfono</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="message" data-i18n="contact.formMessage">Mensaje</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn--solid" data-i18n="contact.formSubmit">ENVIAR</button>
+          <p class="contact-form__status" id="contactFormStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <!-- Mapa de ubicación integrado al contacto -->
+        <div class="contact__map" data-reveal>
+          <iframe
+            class="location__map"
+            src="https://www.google.com/maps?q=Parcelaci%C3%B3n%20Saint%20Regis%2C%20Rionegro%2C%20Antioquia%2C%20Colombia&z=14&output=embed"
+            title="Ubicación — Parcelación Saint Regis"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <div class="location__map-badge">
+            <span class="location__map-dot" aria-hidden="true"></span>
+            <span data-i18n="location.badge">SAINT REGIS</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p class="footer__name" data-i18n="header.propertyName">LAKE HOUSE Nº21</p>
+        <p class="footer__rights" data-i18n="footer.rights">© 2026 Lake House Nº21. Todos los derechos reservados.</p>
+        <p class="footer__credits" data-i18n="footer.credits">Diseño y desarrollo — Estudio</p>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

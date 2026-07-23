@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "overview": "Concepto",
+    "gallery": "Exterior",
+    "floorplans": "Distribución",
+    "interior": "Interior",
+    "location": "Ubicación",
+    "amenities": "Amenidades",
+    "contact": "Contacto",
+    "cta": "Agendar visita"
+  },
+  "header": {
+    "propertyName": "LAKE HOUSE Nº21",
+    "menuOpen": "Menú",
+    "menuClose": "Cerrar"
+  },
+  "gate": {
+    "mediaLabel": "SAINT REGIS — VISTA AÉREA",
+    "eyebrow": "PARCELACIÓN SAINT REGIS",
+    "enter": "ENTRAR",
+    "desc": "Diseñado por CNTXT arquitectura en Medellín, Colombia"
+  },
+  "hero": {
+    "mediaLabel": "IMAGEN / MODELO 3D — FACHADA PRINCIPAL",
+    "buildingFallback": "RECORTE PNG — FACHADA LAKE HOUSE Nº21",
+    "eyebrow": "PARCELACIÓN SAINT REGIS",
+    "title": "DONDE LA <strong>ARQUITECTURA</strong><br>SE VUELVE<br><strong>HOGAR</strong>",
+    "subtitle": "Una residencia unifamiliar concebida sin límites entre el diseño, la luz y el paisaje.",
+    "priceCta": "CONSULTAR PRECIO",
+    "scrollCue": "DESLIZA"
+  },
+  "overview": {
+    "eyebrow": "01 — CONCEPTO",
+    "title": "UNA OBRA PENSADA<br>PARA VIVIRSE",
+    "highlightLocationValue": "SAINT REGIS",
+    "highlightLocationLabel": "Parcelación",
+    "highlight1": "Aeropuerto JMC",
+    "highlight2": "Túnel de Oriente",
+    "highlight3": "Medellín",
+    "highlight4": "Hospital San Vicente Fundación",
+    "highlight5": "Centros comerciales y malls",
+    "text": "Como una <strong>escultura habitable</strong>, esta residencia dialoga con su entorno y transforma cada recorrido interior en una <strong>experiencia sensorial</strong>. Volúmenes puros, materiales nobles y luz natural definen un hogar que <strong>no sigue tendencias</strong>: las establece."
+  },
+  "gallery": {
+    "img1": { "label": "FACHADA PRINCIPAL" },
+    "img2": { "label": "LLEGADA" },
+    "img3": { "label": "ACCESO Y GARAJE" },
+    "img4": { "label": "JARDÍN" },
+    "img5": { "label": "TERRAZA" },
+    "img6": { "label": "VISTA AL LAGO" }
+  },
+  "floorplans": {
+    "eyebrow": "02 — DISTRIBUCIÓN",
+    "levelLabel": "NIVEL",
+    "tab1": "PRIMER PISO",
+    "tab2": "SEGUNDO PISO"
+  },
+  "interior": {
+    "eyebrow": "03 — INTERIOR",
+    "title": "DISEÑO & ESPACIOS INTERIORES",
+    "img1": { "label": "Interior — vista 1" },
+    "img2": { "label": "Interior — vista 2" },
+    "img3": { "label": "Interior — vista 3" },
+    "img4": { "label": "Interior — vista 4" },
+    "img5": { "label": "Interior — vista 5" },
+    "img6": { "label": "Interior — vista 6" },
+    "img7": { "label": "Interior — vista 7" },
+    "img8": { "label": "Interior — vista 8" },
+    "img9": { "label": "Interior — vista 9" }
+  },
+  "location": {
+    "badge": "SAINT REGIS",
+    "eyebrow": "03 — UBICACIÓN",
+    "title": "LA DIRECCIÓN DE TU<br>PRÓXIMO CAPÍTULO",
+    "text": "Un sector privilegiado, cerca de todo lo importante y lejos del ruido de la ciudad.",
+    "item1": "Centro comercial",
+    "item2": "Colegios internacionales",
+    "item3": "Aeropuerto",
+    "item4": "Vías principales"
+  },
+  "amenities": {
+    "eyebrow": "04 — AMENIDADES",
+    "title": "DISEÑADA PARA<br>EL BIENESTAR",
+    "item1": "Seguridad 24/7",
+    "item2": "Energía Subterránea",
+    "item3": "Lago interno con salida desde el lote",
+    "item4": "Salón social",
+    "item5": "2 canchas de tenis",
+    "item6": "Cancha polideportiva",
+    "item7": "Gimnasio"
+  },
+  "cinematic": {
+    "mediaLabel": "VIDEO — RECORRIDO AÉREO",
+    "eyebrow": "05",
+    "title": "UNA <strong>EXPERIENCIA</strong> QUE SE<br>SIENTE ANTES DE <strong>VERSE</strong>",
+    "playLabel": "REPRODUCIR",
+    "pauseLabel": "PAUSAR"
+  },
+  "contact": {
+    "eyebrow": "06 — CONTACTO",
+    "title": "AGENDA TU<br>VISITA PRIVADA",
+    "text": "Completa el formulario y un asesor se pondrá en contacto contigo en menos de 24 horas.",
+    "agentName": "María Fernanda Ríos",
+    "agentRole": "Asesora inmobiliaria",
+    "agentPhone": "+57 300 000 0000",
+    "agentEmail": "contacto@lakehouse21.com",
+    "formName": "Nombre",
+    "formEmail": "Correo electrónico",
+    "formPhone": "Teléfono",
+    "formMessage": "Mensaje",
+    "formSubmit": "ENVIAR",
+    "formSending": "Enviando…",
+    "formSuccess": "Gracias. Tu mensaje fue recibido, te contactaremos pronto.",
+    "formError": "El formulario aún no está conectado a un destino real. Configura el endpoint en src/js/contact-form.js."
+  },
+  "specs": {
+    "eyebrow": "ESPECIFICACIONES",
+    "areaConstruida": "Área Construida",
+    "bedrooms": "Habitaciones",
+    "bathrooms": "Baños",
+    "lotArea": "Área de Lote"
+  },
+  "footer": {
+    "rights": "© 2026 Lake House Nº21. Todos los derechos reservados.",
+    "credits": "Diseño y desarrollo — Estudio"
+  }
+}

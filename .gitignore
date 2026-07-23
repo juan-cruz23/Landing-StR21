@@ -1,0 +1,21 @@
+# Dependencias
+node_modules/
+
+# Build de Vite
+dist/
+
+# Variables de entorno
+.env
+.env.local
+
+# Archivos de Claude
+.claude/
+
+# Logs
+*.log
+
+# Mac
+.DS_Store
+
+# VSCode (opcional)
+.vscode/

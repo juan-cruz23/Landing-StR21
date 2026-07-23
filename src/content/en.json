@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "overview": "Concept",
+    "gallery": "Exterior",
+    "floorplans": "Layout",
+    "interior": "Interior",
+    "location": "Location",
+    "amenities": "Amenities",
+    "contact": "Contact",
+    "cta": "Book a visit"
+  },
+  "header": {
+    "propertyName": "LAKE HOUSE Nº21",
+    "menuOpen": "Menu",
+    "menuClose": "Close"
+  },
+  "gate": {
+    "mediaLabel": "SAINT REGIS — AERIAL VIEW",
+    "eyebrow": "SAINT REGIS ESTATE",
+    "enter": "ENTER",
+    "desc": "Designed by CNTXT arquitectura in Medellín, Colombia"
+  },
+  "hero": {
+    "mediaLabel": "IMAGE / 3D MODEL — MAIN FACADE",
+    "buildingFallback": "PNG CUTOUT — LAKE HOUSE Nº21 FACADE",
+    "eyebrow": "SAINT REGIS ESTATE",
+    "title": "WHERE <strong>ARCHITECTURE</strong><br>BECOMES<br><strong>HOME</strong>",
+    "subtitle": "A single-family residence conceived with no boundaries between design, light, and landscape.",
+    "priceCta": "REQUEST PRICE",
+    "scrollCue": "SCROLL"
+  },
+  "overview": {
+    "eyebrow": "01 — CONCEPT",
+    "title": "A WORK BUILT<br>TO BE LIVED IN",
+    "highlightLocationValue": "SAINT REGIS",
+    "highlightLocationLabel": "Estate",
+    "highlight1": "JMC Airport",
+    "highlight2": "Túnel de Oriente",
+    "highlight3": "Medellín",
+    "highlight4": "San Vicente Fundación Hospital",
+    "highlight5": "Malls & shopping centers",
+    "text": "Like a <strong>habitable sculpture</strong>, this residence engages in dialogue with its surroundings, turning every interior path into a <strong>sensory experience</strong>. Pure volumes, noble materials, and natural light define a home that <strong>doesn't follow trends</strong> — it sets them."
+  },
+  "gallery": {
+    "img1": { "label": "MAIN FACADE" },
+    "img2": { "label": "ARRIVAL" },
+    "img3": { "label": "ACCESS & GARAGE" },
+    "img4": { "label": "GARDEN" },
+    "img5": { "label": "TERRACE" },
+    "img6": { "label": "LAKE VIEW" }
+  },
+  "floorplans": {
+    "eyebrow": "02 — LAYOUT",
+    "levelLabel": "LEVEL",
+    "tab1": "FIRST FLOOR",
+    "tab2": "SECOND FLOOR"
+  },
+  "interior": {
+    "eyebrow": "03 — INTERIOR",
+    "title": "DESIGN & INTERIOR SPACES",
+    "img1": { "label": "Interior — view 1" },
+    "img2": { "label": "Interior — view 2" },
+    "img3": { "label": "Interior — view 3" },
+    "img4": { "label": "Interior — view 4" },
+    "img5": { "label": "Interior — view 5" },
+    "img6": { "label": "Interior — view 6" },
+    "img7": { "label": "Interior — view 7" },
+    "img8": { "label": "Interior — view 8" },
+    "img9": { "label": "Interior — view 9" }
+  },
+  "location": {
+    "badge": "SAINT REGIS",
+    "eyebrow": "03 — LOCATION",
+    "title": "THE ADDRESS OF YOUR<br>NEXT CHAPTER",
+    "text": "A privileged area, close to everything that matters and far from the noise of the city.",
+    "item1": "Shopping center",
+    "item2": "International schools",
+    "item3": "Airport",
+    "item4": "Main roads"
+  },
+  "amenities": {
+    "eyebrow": "04 — AMENITIES",
+    "title": "DESIGNED FOR<br>WELL-BEING",
+    "item1": "24/7 Security",
+    "item2": "Underground Power Lines",
+    "item3": "Private lake with lot-side access",
+    "item4": "Social lounge",
+    "item5": "2 tennis courts",
+    "item6": "Multi-sport court",
+    "item7": "Gymnasium"
+  },
+  "cinematic": {
+    "mediaLabel": "VIDEO — AERIAL WALKTHROUGH",
+    "eyebrow": "05",
+    "title": "AN <strong>EXPERIENCE</strong> THAT IS FELT<br>BEFORE IT IS <strong>SEEN</strong>",
+    "playLabel": "PLAY",
+    "pauseLabel": "PAUSE"
+  },
+  "contact": {
+    "eyebrow": "06 — CONTACT",
+    "title": "BOOK YOUR<br>PRIVATE VISIT",
+    "text": "Fill out the form and an advisor will contact you within 24 hours.",
+    "agentName": "María Fernanda Ríos",
+    "agentRole": "Real estate advisor",
+    "agentPhone": "+57 300 000 0000",
+    "agentEmail": "contact@lakehouse21.com",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formPhone": "Phone",
+    "formMessage": "Message",
+    "formSubmit": "SEND",
+    "formSending": "Sending…",
+    "formSuccess": "Thank you. Your message has been received, we will contact you soon.",
+    "formError": "The form is not connected to a live endpoint yet. Configure it in src/js/contact-form.js."
+  },
+  "specs": {
+    "eyebrow": "SPECIFICATIONS",
+    "areaConstruida": "Built Area",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "lotArea": "Lot Area"
+  },
+  "footer": {
+    "rights": "© 2026 Lake House Nº21. All rights reserved.",
+    "credits": "Design & development — Studio"
+  }
+}
