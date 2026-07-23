@@ -89,11 +89,6 @@ export function initGate(lenis) {
     });
   }
 
-  // Click anywhere on the gate background as intuitive fallback
-  gate.addEventListener('click', () => {
-    openGate();
-  });
-
   // Keyboard: Enter or Space
   window.addEventListener('keydown', (e) => {
     if ((e.key === 'Enter' || e.key === ' ') && !opened) {

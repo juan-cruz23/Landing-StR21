@@ -20,6 +20,10 @@
     "enter": "ENTRAR",
     "desc": "Diseñado por CNTXT arquitectura en Medellín, Colombia"
   },
+  "rotate": {
+    "title": "Gira tu dispositivo",
+    "desc": "Esta experiencia está diseñada para verse en horizontal. Rota tu teléfono para continuar."
+  },
   "hero": {
     "mediaLabel": "IMAGEN / MODELO 3D — FACHADA PRINCIPAL",
     "buildingFallback": "RECORTE PNG — FACHADA LAKE HOUSE Nº21",

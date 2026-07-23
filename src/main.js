@@ -7,6 +7,7 @@ import './styles/lightbox.css';
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { initMobileScale } from './js/mobile-scale.js';
 import { initI18n } from './js/i18n.js';
 import { initSmoothScroll } from './js/lenis-setup.js';
 import { initScrollAnimations } from './js/scroll-animations.js';
@@ -227,6 +228,10 @@ function init() {
     hidePreloader();
   }
 }
+
+// Runs immediately (not gated on DOMContentLoaded) so touch-only CSS sizes
+// have the right --mobile-scale before first paint.
+initMobileScale();
 
 // Safety fallback: ensure preloader is removed after 1s even if load misfires
 window.setTimeout(hidePreloader, 1000);

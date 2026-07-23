@@ -20,6 +20,10 @@
     "enter": "ENTER",
     "desc": "Designed by CNTXT arquitectura in Medellín, Colombia"
   },
+  "rotate": {
+    "title": "Rotate your device",
+    "desc": "This experience is designed for landscape viewing. Rotate your phone to continue."
+  },
   "hero": {
     "mediaLabel": "IMAGE / 3D MODEL — MAIN FACADE",
     "buildingFallback": "PNG CUTOUT — LAKE HOUSE Nº21 FACADE",

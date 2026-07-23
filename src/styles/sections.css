@@ -110,6 +110,31 @@
   }
 }
 
+/* Touch devices render the forced 1440px desktop layout (see index.html's
+   viewport meta), so the max-width block above never fires — and a fixed
+   rem number isn't enough either: the whole page gets auto-zoomed down by
+   screen-width ÷ 1440, so any css length (rem included) still shrinks by
+   that same factor. --mobile-scale (see mobile-scale.js) holds that factor,
+   so dividing by it here targets a real on-screen px size regardless of
+   phone width. Position/layout untouched — just scale. */
+@media (hover: none) and (pointer: coarse) {
+  .hero__title {
+    font-size: calc(38px / var(--mobile-scale));
+    margin-bottom: calc(10px / var(--mobile-scale));
+  }
+
+  .hero__subtitle {
+    font-size: calc(15px / var(--mobile-scale));
+    max-width: 34ch;
+    margin-bottom: calc(18px / var(--mobile-scale));
+  }
+
+  .hero__cta {
+    padding: calc(14px / var(--mobile-scale)) calc(28px / var(--mobile-scale));
+    font-size: calc(14px / var(--mobile-scale));
+  }
+}
+
 /* The building cutout sits in front of the text (later in DOM + higher
    z-index) — same layering likova.space uses for its intro building.
    Full-bleed and cover-fit, same box model as .hero__media, so it lines
@@ -285,6 +310,16 @@
      inheriting height from the tall .gallery parent here would make the
      "pinned viewport window" as tall as the whole scroll track, which
      defeats the pin entirely. */
+  /* Clips the multi-thousand-px-wide .gallery__track to this element's own
+     box — .gallery (the section, an ANCESTOR of the element GSAP sets to
+     position:fixed) can't have overflow:hidden, that's what broke click
+     hit-testing before. This is a different element (the one that itself
+     becomes fixed, not an ancestor of it), so it doesn't hit that bug, and
+     it stops the track's raw width from ballooning document.body.scrollWidth
+     into the tens of thousands of pixels — which some mobile browsers factor
+     into their forced-viewport zoom-to-fit, leaving a blank strip on real
+     phones even though desktop never showed any visible overflow. */
+  overflow: hidden;
 }
 
 .gallery__track {

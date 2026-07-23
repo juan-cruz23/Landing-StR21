@@ -1,4 +1,8 @@
 :root {
+  /* Fallback before mobile-scale.js sets the real per-device value — see
+     that file for why touch-only sizes need this at all. */
+  --mobile-scale: 0.28;
+
   /* Color */
   --color-ink: #0e0e0c;
   --color-ink-soft: #201f1c;

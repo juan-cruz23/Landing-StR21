@@ -5,7 +5,6 @@
   overflow: hidden;
   background: var(--color-ink);
   color: var(--color-paper);
-  cursor: pointer;
 }
 
 .gate__media {
@@ -183,6 +182,23 @@
   color: rgba(247, 245, 241, 0.75);
 }
 
+/* Touch devices don't "click" — swap the copy instead of leaving desktop
+   mouse language on a phone. Feature-based (hover: none / pointer: coarse),
+   not a width breakpoint, since it's about input method, not screen size. */
+.gate__cue--touch {
+  display: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .gate__cue--pointer {
+    display: none;
+  }
+
+  .gate__cue--touch {
+    display: inline;
+  }
+}
+
 /* 3. Bottom Editorial Bar */
 .gate__bottom {
   display: flex;
@@ -230,5 +246,229 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+}
+
+/* Touch devices now render the same forced 1440px desktop layout
+   (index.html's viewport meta), auto-zoomed down to fit the physical
+   screen — so max-width breakpoints never fire here. A fixed rem number
+   isn't enough on its own either: the auto-zoom (screen width ÷ 1440)
+   shrinks every css length by that same factor, rem included, which is why
+   an earlier pass at these sizes still read as too small. --mobile-scale
+   (mobile-scale.js) holds that factor, so dividing by it targets a real
+   on-screen px size regardless of phone width. Position/layout is
+   untouched — just scale.
+
+   Safety net kept from the earlier pass: .gate normally clips overflow
+   (overflow: hidden), which would silently crop the bottom content if
+   these sizes turn out too big on some real device. Letting it scroll
+   internally on touch devices means worst case is "scroll a bit," not
+   "the description disappears." */
+@media (hover: none) and (pointer: coarse) {
+  .gate {
+    overflow-y: auto;
+  }
+
+  .gate__top {
+    font-size: calc(12px / var(--mobile-scale));
+  }
+
+  .gate__title {
+    font-size: calc(42px / var(--mobile-scale));
+  }
+
+  .gate__subtitle {
+    font-size: calc(13px / var(--mobile-scale));
+  }
+
+  .gate__enter {
+    padding: calc(16px / var(--mobile-scale)) calc(32px / var(--mobile-scale));
+    font-size: calc(15px / var(--mobile-scale));
+  }
+
+  .gate__enter-arrow {
+    width: calc(20px / var(--mobile-scale));
+    height: calc(20px / var(--mobile-scale));
+  }
+
+  .gate__cue {
+    font-size: calc(11px / var(--mobile-scale));
+  }
+
+  .gate__code {
+    font-size: calc(11px / var(--mobile-scale));
+  }
+
+  .gate__desc {
+    font-size: calc(14px / var(--mobile-scale));
+  }
+}
+
+/* Rotate-device prompt — shown only on touch devices held in portrait.
+   Pure CSS gate: no JS needed to show/hide it, and it sits above .gate
+   (z-index 150) and everything else so nothing can render behind it.
+   `html, body` overflow is locked in the same query so the (invisible,
+   covered) portrait layout can't be scrolled behind the prompt. */
+.rotate-prompt {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  padding: 2.5rem;
+  background: radial-gradient(circle at center, var(--color-ink-soft) 0%, var(--color-ink) 100%);
+  color: var(--color-paper);
+  text-align: center;
+}
+
+/* Editorial viewfinder corners — same restrained "poster" language as the
+   gate's top/bottom bars, scaled down to frame this smaller overlay. */
+.rotate-prompt::before,
+.rotate-prompt::after {
+  content: '';
+  position: absolute;
+  width: clamp(20px, 6vw, 32px);
+  height: clamp(20px, 6vw, 32px);
+  border: 1px solid var(--color-line-on-dark);
+}
+
+.rotate-prompt::before {
+  top: 1.5rem;
+  left: 1.5rem;
+  border-width: 1px 0 0 1px;
+}
+
+.rotate-prompt::after {
+  bottom: 1.5rem;
+  right: 1.5rem;
+  border-width: 0 1px 1px 0;
+}
+
+.rotate-prompt__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.rotate-prompt__mark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  color: var(--color-paper);
+}
+
+.rotate-prompt__rule {
+  width: 32px;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.85;
+}
+
+.rotate-prompt__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: rgba(247, 245, 241, 0.55);
+}
+
+.rotate-prompt__icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  color: var(--color-accent);
+  animation: rotate-prompt-hint 2.6s ease-in-out infinite;
+}
+
+.rotate-prompt__arrow {
+  opacity: 0.85;
+}
+
+@keyframes rotate-prompt-hint {
+  0%, 15% {
+    transform: rotate(0deg);
+  }
+  45%, 65% {
+    transform: rotate(-90deg);
+  }
+  90%, 100% {
+    transform: rotate(0deg);
+  }
+}
+
+.rotate-prompt__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+}
+
+.rotate-prompt__desc {
+  max-width: 34ch;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(247, 245, 241, 0.75);
+}
+
+.rotate-prompt__code {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(247, 245, 241, 0.55);
+}
+
+@media (hover: none) and (pointer: coarse) and (orientation: portrait) {
+  html,
+  body {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .rotate-prompt {
+    display: flex;
+  }
+
+  .rotate-prompt__mark {
+    font-size: calc(14px / var(--mobile-scale));
+  }
+
+  .rotate-prompt__eyebrow {
+    font-size: calc(10px / var(--mobile-scale));
+  }
+
+  .rotate-prompt__icon {
+    width: calc(48px / var(--mobile-scale));
+    height: calc(48px / var(--mobile-scale));
+  }
+
+  .rotate-prompt__title {
+    font-size: calc(20px / var(--mobile-scale));
+  }
+
+  .rotate-prompt__desc {
+    font-size: calc(14px / var(--mobile-scale));
+  }
+
+  .rotate-prompt__code {
+    font-size: calc(10px / var(--mobile-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotate-prompt__icon {
+    animation: none;
   }
 }

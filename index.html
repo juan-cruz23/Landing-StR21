@@ -2,7 +2,14 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- TEMPORARY: forces the desktop layout on mobile too (classic
+         "view desktop site" trick) — a fixed virtual viewport width instead
+         of device-width means phones render the exact same layout as
+         desktop, auto-zoomed out to fit the screen, rather than tripping
+         any max-width responsive breakpoints. Revert to
+         `width=device-width, initial-scale=1` once real mobile-specific
+         layouts are ready. -->
+    <meta name="viewport" content="width=1440" />
     <title>Lake House Nº21 — Parcelación Saint Regis</title>
     <meta
       name="description"
@@ -20,6 +27,28 @@
     <!-- Preloader -->
     <div class="preloader" id="preloader" aria-hidden="true">
       <span class="preloader__mark">LH21</span>
+    </div>
+
+    <!-- Rotate-device prompt: this experience only renders (gate, hero,
+         everything) in landscape on touch devices — shown/hidden purely via
+         CSS media query, no JS needed. Sits above the gate in z-index. -->
+    <div class="rotate-prompt" id="rotatePrompt" aria-hidden="true">
+      <div class="rotate-prompt__brand">
+        <span class="rotate-prompt__mark">LH21</span>
+        <span class="rotate-prompt__rule"></span>
+        <span class="rotate-prompt__eyebrow" data-i18n="gate.eyebrow">PARCELACIÓN SAINT REGIS</span>
+      </div>
+      <svg class="rotate-prompt__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="7" y="2" width="10" height="16" rx="1.5" />
+        <line x1="10" y1="16.5" x2="14" y2="16.5" />
+        <path class="rotate-prompt__arrow" d="M19.5 9.5a6 6 0 1 1-1.2-3.6" />
+        <path class="rotate-prompt__arrow" d="M19.5 4.5v3.6h-3.6" />
+      </svg>
+      <p class="rotate-prompt__title" data-i18n="rotate.title">Gira tu dispositivo</p>
+      <p class="rotate-prompt__desc" data-i18n="rotate.desc">
+        Esta experiencia está diseñada para verse en horizontal. Rota tu teléfono para continuar.
+      </p>
+      <span class="rotate-prompt__code">(001)</span>
     </div>
 
     <!-- Gate: editorial aerial Saint Regis intro splash screen -->
@@ -61,7 +90,8 @@
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </button>
-              <span class="gate__cue">(click para explorar)</span>
+              <span class="gate__cue gate__cue--pointer">(click para explorar)</span>
+              <span class="gate__cue gate__cue--touch">(toca para explorar)</span>
             </div>
           </div>
         </div>

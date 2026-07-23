@@ -236,6 +236,59 @@ body.menu-open .drawer__cta {
   }
 }
 
+/* Touch devices render the forced 1440px desktop layout (index.html's
+   viewport meta), so the max-width block above never fires — and a fixed
+   rem number isn't enough either: the whole page auto-zooms down by
+   screen-width ÷ 1440, shrinking every css length by that same factor.
+   --mobile-scale (mobile-scale.js) holds that factor, so dividing by it
+   targets a real on-screen px size regardless of phone width. Sizing only —
+   the menu toggle keeps the exact same bare text + hairline-icon look as
+   desktop (a filled pill/button treatment was tried and reverted per
+   request: "ponlo como el de desktop"). */
+@media (hover: none) and (pointer: coarse) {
+  /* The header's own height is a fixed px token (--header-height), which
+     doesn't scale on its own — the bigger touch-sized logo/menu text below
+     needs a taller header to sit in without clipping. Overriding the token
+     itself (not just .header) also fixes the section padding-top/
+     scroll-margin-top offsets in sections.css that read the same variable,
+     so anchor-scroll targets still land below the header on touch too. */
+  :root {
+    --header-height: calc(60px / var(--mobile-scale));
+  }
+
+  .header__logo {
+    font-size: calc(15px / var(--mobile-scale));
+  }
+
+  .lang-switch {
+    font-size: calc(12px / var(--mobile-scale));
+    gap: calc(5px / var(--mobile-scale));
+  }
+
+  .menu-toggle {
+    font-size: calc(13px / var(--mobile-scale));
+    gap: calc(8px / var(--mobile-scale));
+  }
+
+  .menu-toggle__icon {
+    width: calc(22px / var(--mobile-scale));
+    gap: calc(5px / var(--mobile-scale));
+  }
+
+  .menu-toggle__icon span {
+    height: calc(2px / var(--mobile-scale));
+  }
+
+  .drawer__link {
+    font-size: calc(22px / var(--mobile-scale));
+  }
+
+  .drawer__cta {
+    font-size: calc(13px / var(--mobile-scale));
+    padding: calc(14px / var(--mobile-scale)) calc(24px / var(--mobile-scale));
+  }
+}
+
 /* Generic section container */
 .section {
   position: relative;
