@@ -132,15 +132,14 @@
    on an unzoomed responsive page. So this is a normal fluid clamp, just with
    its floor/ceiling expressed as apparent px instead of rem. */
 @media (hover: none) and (pointer: coarse) {
-  /* Desktop's max-width:900px is ~62.5% of the 1440 layout width — fine
-     there, but the building cutout's crop shifts with the container's real
-     aspect ratio (landscape phones vary more than desktop windows do), so
-     that same 62.5% can end up close enough to the house to hurt legibility.
-     Pulling the text column in further (vw, so it's a real % of the actual
-     screen — see the note above on why plain vw works out that way here)
-     buys back a guaranteed buffer regardless of exactly where the crop
-     lands. */
+  /* Desktop deliberately layers the building cutout (z-index 3) in front of
+     the text (z-index 2) — see hero-pin.js, it's the occlusion effect the
+     parallax scroll is built around. On mobile there's no scroll-driven
+     reveal happening at first paint, just a static overlap risk, so
+     simplest fix: put the text on top instead of trying to out-guess where
+     the cutout's cover-fit crop lands. */
   .hero__content {
+    z-index: 4;
     max-width: 56vw;
   }
 
