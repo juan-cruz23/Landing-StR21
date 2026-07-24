@@ -214,6 +214,23 @@
   background: var(--color-ink);
 }
 
+/* Touch: this bar's height/margin (like --header-height, see layout.css)
+   need to be expressed as calc(px / --mobile-scale) too, not just left as
+   the desktop clamp. logo-scale.js measures both this bar and the header
+   via getBoundingClientRect() in the same forced-1440 coordinate space and
+   does math between them (targetScale, targetY) — if only --header-height
+   is compensated for the auto-zoom and this bar isn't, their raw numbers
+   stop being proportionate to each other, and the logo/bar positioning
+   comes out wrong ("not in place"). Also just sized down in general: the
+   desktop clamp tops out at 180px, a much bigger share of a short landscape
+   phone screen (~380-430px tall) than of a normal desktop viewport. */
+@media (hover: none) and (pointer: coarse) {
+  .section-divider {
+    height: calc(56px / var(--mobile-scale));
+    margin-top: calc(-32px / var(--mobile-scale));
+  }
+}
+
 /* Overview statement — likova.space-style: one big editorial block on solid
    black, full-bleed and wide ("horizontal format"), right after the sticky
    divider bar the logo grows through. No photo here; just type. */
