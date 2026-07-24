@@ -111,27 +111,36 @@
 }
 
 /* Touch devices render the forced 1440px desktop layout (see index.html's
-   viewport meta), so the max-width block above never fires — and a fixed
-   rem number isn't enough either: the whole page gets auto-zoomed down by
-   screen-width ÷ 1440, so any css length (rem included) still shrinks by
-   that same factor. --mobile-scale (see mobile-scale.js) holds that factor,
-   so dividing by it here targets a real on-screen px size regardless of
-   phone width. Position/layout untouched — just scale. */
+   viewport meta), so the max-width block above never fires. A flat
+   calc(px / --mobile-scale) size (the first version of this block) targets
+   a constant apparent on-screen size regardless of phone width — good for a
+   legibility floor, but it doesn't shrink on narrower landscape phones, so
+   the title could crowd the frame / crowd the building cutout image on the
+   right instead of staying comfortably within it.
+
+   Fix: clamp() between two constant-apparent-px bounds (calc(px/scale), same
+   trick as before) with a plain vw value as the fluid middle. vw here still
+   resolves against the forced 1440 viewport, but that's exactly what makes
+   it work out: css_px_from_vw × (real_width ÷ 1440) [the browser's own
+   auto-zoom] simplifies to vw_fraction × real_width — i.e. plain vw already
+   lands at a fixed % of the REAL device width after zoom, same as it would
+   on an unzoomed responsive page. So this is a normal fluid clamp, just with
+   its floor/ceiling expressed as apparent px instead of rem. */
 @media (hover: none) and (pointer: coarse) {
   .hero__title {
-    font-size: calc(38px / var(--mobile-scale));
+    font-size: clamp(calc(24px / var(--mobile-scale)), 7.5vw, calc(44px / var(--mobile-scale)));
     margin-bottom: calc(10px / var(--mobile-scale));
   }
 
   .hero__subtitle {
-    font-size: calc(15px / var(--mobile-scale));
+    font-size: clamp(calc(12px / var(--mobile-scale)), 2.2vw, calc(16px / var(--mobile-scale)));
     max-width: 34ch;
     margin-bottom: calc(18px / var(--mobile-scale));
   }
 
   .hero__cta {
     padding: calc(14px / var(--mobile-scale)) calc(28px / var(--mobile-scale));
-    font-size: calc(14px / var(--mobile-scale));
+    font-size: clamp(calc(12px / var(--mobile-scale)), 2vw, calc(15px / var(--mobile-scale)));
   }
 }
 
