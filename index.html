@@ -24,9 +24,14 @@
     />
   </head>
   <body>
-    <!-- Preloader -->
+    <!-- Preloader: stays up until main.js confirms fonts + init are both
+         actually ready (not just DOM-parsed), so nothing flashes in the
+         browser's fallback serif before the real typeface swaps in. -->
     <div class="preloader" id="preloader" aria-hidden="true">
-      <span class="preloader__mark">LH21</span>
+      <div class="preloader__inner">
+        <span class="preloader__mark">LH21</span>
+        <span class="preloader__bar"><span class="preloader__bar-fill"></span></span>
+      </div>
     </div>
 
     <!-- Rotate-device prompt: this experience only renders (gate, hero,

@@ -10,11 +10,58 @@
   transition: opacity var(--dur-slow) var(--ease-out), visibility var(--dur-slow) var(--ease-out);
 }
 
+.preloader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
 .preloader__mark {
   font-family: var(--font-display);
   font-size: 1.5rem;
   letter-spacing: 0.3em;
   color: var(--color-paper);
+}
+
+/* Indeterminate loading bar — we don't have a real progress number (fonts
+   readiness resolves as a single promise, not a stream of %), so a sweeping
+   fill communicates "still working" without pretending to be precise. */
+.preloader__bar {
+  position: relative;
+  width: 120px;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(247, 245, 241, 0.15);
+}
+
+.preloader__bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 35%;
+  background: var(--color-accent);
+  animation: preloader-sweep 1.3s ease-in-out infinite;
+}
+
+@keyframes preloader-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(140%);
+  }
+  100% {
+    transform: translateX(140%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__bar-fill {
+    animation: none;
+    width: 100%;
+  }
 }
 
 .preloader.is-hidden {

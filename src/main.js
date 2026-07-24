@@ -195,6 +195,27 @@ function hidePreloader() {
   }, 1000);
 }
 
+// The preloader used to drop as soon as init() finished running — which
+// happens near-instantly, well before the Google Fonts request has actually
+// resolved. On a slow connection that revealed the page mid font-swap: full
+// layout/colors already applied, but text still in the browser's fallback
+// serif, reading as "unstyled". Now it waits for BOTH init() *and*
+// document.fonts.ready (resolves once every font actually used on the page
+// has loaded) before dropping, so the swap always happens behind the
+// preloader instead of in front of the visitor.
+let appReady = false;
+let fontsReady = false;
+
+function maybeHidePreloader() {
+  if (appReady && fontsReady) hidePreloader();
+}
+
+function markFontsReady() {
+  if (fontsReady) return;
+  fontsReady = true;
+  maybeHidePreloader();
+}
+
 function init() {
   try {
     initI18n();
@@ -225,7 +246,8 @@ function init() {
   } catch (err) {
     console.error('Error during init:', err);
   } finally {
-    hidePreloader();
+    appReady = true;
+    maybeHidePreloader();
   }
 }
 
@@ -233,8 +255,17 @@ function init() {
 // have the right --mobile-scale before first paint.
 initMobileScale();
 
-// Safety fallback: ensure preloader is removed after 1s even if load misfires
-window.setTimeout(hidePreloader, 1000);
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(markFontsReady).catch(markFontsReady);
+} else {
+  // Font Loading API unsupported (very old browser) — nothing to wait for.
+  markFontsReady();
+}
+
+// Safety fallback: never let a stalled font/network request hold the
+// preloader up forever — 4s is well past normal load time but still a hard
+// ceiling, unlike the old unconditional 1s hide this replaces.
+window.setTimeout(hidePreloader, 4000);
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
