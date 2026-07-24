@@ -159,6 +159,23 @@
     padding: calc(14px / var(--mobile-scale)) calc(28px / var(--mobile-scale));
     font-size: clamp(calc(12px / var(--mobile-scale)), 2vw, calc(15px / var(--mobile-scale)));
   }
+
+  /* Sizing the text box to *dodge* the building only works if we can predict
+     where the building's cover-fit crop lands — and that shifts with the
+     container's real aspect ratio, which varies a lot more across phones
+     in landscape than across desktop browser windows. Rather than keep
+     guessing a vw split that happens to miss the house on every screen,
+     mask the building itself so it's simply not rendered before the text
+     column's own right edge (56vw, matching .hero__content's max-width
+     above) — a guarantee independent of the image crop, not an estimate.
+     mask-image doesn't touch layout/object-fit sizing, so hero__building
+     stays pixel-aligned with hero__media underneath (see hero-pin.js) —
+     only what's painted changes. The 12vw fade (56vw → 68vw) makes it read
+     as an intentional reveal instead of a hard crop line. */
+  .hero__building {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, transparent 56vw, black 68vw, black 100%);
+    mask-image: linear-gradient(90deg, transparent 0, transparent 56vw, black 68vw, black 100%);
+  }
 }
 
 /* The building cutout sits in front of the text (later in DOM + higher
