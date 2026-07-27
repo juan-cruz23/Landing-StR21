@@ -227,7 +227,7 @@
 @media (hover: none) and (pointer: coarse) {
   .section-divider {
     height: calc(56px / var(--mobile-scale));
-    margin-top: calc(-32px / var(--mobile-scale));
+    margin-top: calc(-16px / var(--mobile-scale));
   }
 }
 
