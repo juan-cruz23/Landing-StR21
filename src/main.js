@@ -18,6 +18,7 @@ import { initSectionTransitions } from './js/section-transitions.js';
 import { initLightbox } from './js/lightbox.js';
 import { initMenu } from './js/menu.js';
 import { initAnchorScroll } from './js/anchor-scroll.js';
+import { initMobileNextNav } from './js/mobile-next-nav.js';
 import { initContactForm } from './js/contact-form.js';
 import { initGate } from './js/gate.js';
 import { initMediaFallback } from './js/media-fallback.js';
@@ -230,6 +231,7 @@ function init() {
     initLogoScale();
     initMenu(lenis);
     initAnchorScroll(lenis);
+    initMobileNextNav(lenis);
     initContactForm();
     initFloorplanTabs();
     initFloorplanSpaces();
