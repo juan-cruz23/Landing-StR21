@@ -24,7 +24,12 @@ const FIT_RATIO = 0.68;
 export function initLogoScale() {
   const divider = document.getElementById('sectionDivider');
   const logo = document.querySelector('.header__logo');
-  if (!divider || !logo || prefersReducedMotion()) return;
+  // .section-divider is hidden on touch (sections.css) — this whole effect
+  // is built around growing the logo to fit that bar, so there's nothing
+  // to drive it against there; skip rather than animate against a
+  // zero-height, invisible element.
+  const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  if (!divider || !logo || prefersReducedMotion() || isTouch) return;
 
   let tween;
 
