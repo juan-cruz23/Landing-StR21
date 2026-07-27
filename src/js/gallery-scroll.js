@@ -24,7 +24,10 @@ function initSingleGallery(section) {
     gsap.set(items, { clearProps: 'opacity,transform' });
 
     section.classList.add('is-horizontal');
-    pin.style.height = '100vh';
+    // dvh, not vh: see hero-pin.js for why — plain vh sizes against mobile's
+    // largest-possible viewport (address bar hidden), not what's actually
+    // visible, so the pinned frame can render taller than the real screen.
+    pin.style.height = '100dvh';
 
     items.forEach((item, i) => {
       if (item.classList.contains('gallery__item--specs')) return;

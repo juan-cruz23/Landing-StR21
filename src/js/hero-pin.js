@@ -30,7 +30,14 @@ export function initHeroPin() {
   const background = pin.querySelector('[data-parallax-layer="background"]');
   const building = pin.querySelector('[data-parallax-layer="building"]');
 
-  hero.style.height = `${PIN_HEIGHT_VH}vh`;
+  // dvh, not vh: mobile browsers size a literal "vh" length against the
+  // LARGEST possible viewport (as if the address bar were already hidden),
+  // not the actually-visible area — so a real phone with the address bar
+  // showing renders this taller than the visible screen, throwing off where
+  // the pin's own end point (and everything positioned after it in the
+  // document, like .section-divider) lands relative to what the user can
+  // actually see. dvh tracks the real, currently-visible viewport instead.
+  hero.style.height = `${PIN_HEIGHT_VH}dvh`;
 
   ScrollTrigger.create({
     trigger: hero,

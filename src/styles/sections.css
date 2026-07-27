@@ -2,10 +2,17 @@
    the extra height and scrubs the background/text/building layers at
    different rates. Height stays 100vh (no extra scroll room) until JS
    opts in, so a no-JS / prefers-reduced-motion visit just gets a plain,
-   static hero. */
+   static hero.
+
+   dvh as a second declaration (vh first, for browsers without dvh support
+   to fall back to): plain vh sizes against the LARGEST possible mobile
+   viewport (address bar hidden), not what's actually visible with the bar
+   showing, so the pinned frame renders taller than the real screen — dvh
+   tracks the real, currently-visible viewport instead. */
 .hero {
   position: relative;
   height: 100vh;
+  height: 100dvh;
   min-height: 560px;
   background: var(--color-ink);
 }
@@ -13,6 +20,7 @@
 .hero__pin {
   position: relative;
   height: 100vh;
+  height: 100dvh;
   min-height: 560px;
   display: flex;
   align-items: flex-start;
