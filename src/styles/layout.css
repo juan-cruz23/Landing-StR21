@@ -403,8 +403,8 @@ body.menu-open .drawer__cta {
     right: calc(18px / var(--mobile-scale));
     transform: translateY(-50%);
     z-index: 60;
-    width: calc(44px / var(--mobile-scale));
-    height: calc(44px / var(--mobile-scale));
+    width: calc(56px / var(--mobile-scale));
+    height: calc(56px / var(--mobile-scale));
     border-radius: 9999px;
     border: 1px solid var(--color-line-on-dark);
     background: rgba(14, 14, 12, 0.35);
@@ -415,8 +415,8 @@ body.menu-open .drawer__cta {
   }
 
   .mobile-next-nav svg {
-    width: calc(18px / var(--mobile-scale));
-    height: calc(18px / var(--mobile-scale));
+    width: calc(23px / var(--mobile-scale));
+    height: calc(23px / var(--mobile-scale));
   }
 
   .mobile-next-nav:active {
