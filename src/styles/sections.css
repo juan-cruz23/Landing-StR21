@@ -512,6 +512,54 @@
   }
 }
 
+/* Touch: .gallery__specs's fixed height:1080px (above) is taller than a
+   landscape phone's real viewport once the forced-1440 layout is zoomed
+   down — and since section-transitions.js pins this section, GSAP fixes it
+   at ITS OWN box size, not the viewport's. A pinned box taller than what's
+   actually visible pushes the flex-centered grid down past the visible
+   fold, which is why the data table was barely showing at all. 100dvh
+   makes the pinned box match the real visible frame; the rest just scales
+   the now-tighter-fitting grid down so all 4 items' icon+number+label fit
+   in that shorter height without needing to wrap to 2 rows (a phone in
+   landscape is wide, not narrow — one row uses the width it already has
+   instead of trading it for more height). */
+@media (hover: none) and (pointer: coarse) {
+  .gallery__specs {
+    height: 100dvh;
+  }
+
+  .gallery__specs-header {
+    margin-bottom: calc(20px / var(--mobile-scale));
+  }
+
+  .gallery__specs-eyebrow {
+    font-size: calc(14px / var(--mobile-scale));
+  }
+
+  .gallery__specs-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: calc(10px / var(--mobile-scale)) calc(10px / var(--mobile-scale));
+  }
+
+  .specs-item {
+    gap: calc(8px / var(--mobile-scale));
+    padding-top: calc(12px / var(--mobile-scale));
+  }
+
+  .specs-item__icon {
+    width: calc(18px / var(--mobile-scale));
+    height: calc(18px / var(--mobile-scale));
+  }
+
+  .specs-item__value {
+    font-size: calc(22px / var(--mobile-scale));
+  }
+
+  .specs-item__label {
+    font-size: calc(8px / var(--mobile-scale));
+  }
+}
+
 /* Distribución (floor plans) — editorial configurator layout (ref: LOFTEC-
    style viewer): a narrow vertical level rail on the left, the plan PNG
    large and centered in its own "stage" with no box around it, a caption
