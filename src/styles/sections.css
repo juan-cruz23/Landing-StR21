@@ -1033,6 +1033,17 @@
   flex-shrink: 0;
 }
 
+/* Touch: .section-divider is hidden entirely on mobile (sections.css/
+   layout.css), so the padding above — sized to clear a bar that's no
+   longer there — was just pushing the whole section's content down for
+   no reason. Only --header-height (the actual fixed header) needs
+   clearing here now. */
+@media (hover: none) and (pointer: coarse) {
+  .amenities__eyebrow {
+    padding-top: calc(var(--header-height) + calc(14px / var(--mobile-scale)));
+  }
+}
+
 .amenities__grid {
   list-style: none;
   margin: 0;
