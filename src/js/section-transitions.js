@@ -74,20 +74,41 @@ export function initSectionTransitions() {
     }
 
     if (id === 'amenities') {
-      // The icon grid used to reveal itself with its own independent
-      // ScrollTrigger keyed to the section's natural top/bottom crossing
-      // the viewport center — but this section gets pinned (frozen in
-      // place) right below, which froze that trigger's position math too,
-      // so all 7 cards ended up finishing their fade-in within the first
-      // ~15% of the scroll instead of spreading across it. Driving the
-      // cascade off this same pin timeline fixes that, since scrub here is
-      // tied to the actual pin progress, not the section's on-page position.
+      // The icon grid used to cascade in as part of the SAME pin/scrub
+      // timeline that holds and fades the section — meaning the pin engaged
+      // (section already locked in place, fixed on screen) before a single
+      // card had appeared, so the first thing the pin held on was an empty
+      // grid, and the reveal only started once the user kept scrolling
+      // through the pin's own distance. Splitting the cascade into its own
+      // ScrollTrigger over the section's NATURAL pre-pin scroll-in ('top
+      // bottom' → 'top top', i.e. while it's still scrolling normally, before
+      // 'top top' is what triggers the pin below) finishes the reveal
+      // exactly as the section locks into place — so the pin now holds on a
+      // grid that's already fully visible, not an empty one.
       const cards = gsap.utils.toArray('.amenities__card');
       const getCardTargets = (card) =>
         [card.querySelector('.amenities__index'), card.querySelector('.amenities__icon'), card.querySelector('.amenities__name')].filter(
           Boolean
         );
       cards.forEach((card) => gsap.set(getCardTargets(card), { opacity: 0, y: 18 }));
+
+      const cascadeTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: 0.5,
+        },
+      });
+
+      const step = 1 / cards.length;
+      cards.forEach((card, i) => {
+        cascadeTl.to(
+          getCardTargets(card),
+          { opacity: 1, y: 0, duration: step * 0.7, ease: 'power2.out', stagger: step * 0.15 },
+          i * step
+        );
+      });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -97,18 +118,6 @@ export function initSectionTransitions() {
           pin: true,
           scrub: 0.5,
         },
-      });
-
-      // Cascade finishes a bit before the hold ends, so there's a moment
-      // to actually read the fully-revealed grid before it starts fading.
-      const cascadeEnd = HOLD_FRACTION * 0.85;
-      const step = cascadeEnd / cards.length;
-      cards.forEach((card, i) => {
-        tl.to(
-          getCardTargets(card),
-          { opacity: 1, y: 0, duration: step * 0.7, ease: 'power2.out', stagger: step * 0.15 },
-          i * step
-        );
       });
 
       tl.to(section, { autoAlpha: 0, scale: 0.94, ease: 'none', duration: 1 - HOLD_FRACTION }, HOLD_FRACTION);
