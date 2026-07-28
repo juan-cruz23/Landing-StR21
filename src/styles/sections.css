@@ -583,6 +583,26 @@
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+/* Touch: this section is pinned at a fixed, much-taller-than-one-screen
+   height (section-transitions.js — the extra height is deliberate scroll
+   distance for the fade, not meant to be visible). Only the content
+   flowing down from the top is actually seen while pinned, so any
+   spacing here directly eats into how much of the plan+caption fits
+   before running past the bottom of a short landscape screen. Trimmed
+   down (see also main.js's applyRotation touch height budget) so the
+   whole viewer clears the header with room to spare instead of
+   sitting low and clipping. */
+@media (hover: none) and (pointer: coarse) {
+  .floorplans {
+    padding-top: calc(var(--header-height) + calc(8px / var(--mobile-scale)));
+    padding-bottom: calc(8px / var(--mobile-scale));
+  }
+
+  .floorplans__intro {
+    margin-bottom: calc(8px / var(--mobile-scale));
+  }
+}
+
 .floorplans__viewer {
   display: flex;
   gap: clamp(1.25rem, 2.5vw, 2rem);

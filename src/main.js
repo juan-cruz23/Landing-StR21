@@ -100,7 +100,14 @@ function initFloorplanTabs() {
 
     const stageRect = stage.getBoundingClientRect();
     const widthBudget = stageRect.width;
-    const heightBudget = window.innerHeight * 0.76;
+    // Touch/landscape phones carry the same header/intro/rail/caption chrome
+    // around the plan as desktop, but out of a much shorter screen — that
+    // chrome eats a bigger share of the remaining space than it does on a
+    // tall desktop viewport, so 76% left the plan (and everything below it)
+    // taller than what's actually visible in the pinned frame. A smaller
+    // budget leaves enough room for that surrounding chrome to fit too.
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const heightBudget = window.innerHeight * (isTouch ? 0.56 : 0.76);
 
     if (isVertical) {
       // Rotated on its side: what fits in the available height now bounds
