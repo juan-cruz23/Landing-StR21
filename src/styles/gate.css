@@ -216,13 +216,47 @@
   flex-shrink: 0;
 }
 
-.gate__desc {
-  max-width: 52ch;
-  font-size: clamp(0.85rem, 1.1vw, 1.05rem);
-  line-height: 1.6;
+/* Credits strip — three small groups (architect / builders / management),
+   kept deliberately compact (small type, tight line-height) since this is
+   the poster's fine-print corner, not a reading-focused block. Wraps to
+   its own lines under 900px rather than trying to force three columns
+   into a narrow width. */
+.gate__credits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.gate__credit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 22ch;
+}
+
+.gate__credit-label {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.gate__credit-value {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  line-height: 1.45;
   font-weight: 400;
-  color: rgba(247, 245, 241, 0.82);
-  margin: 0;
+  color: rgba(247, 245, 241, 0.8);
+}
+
+.gate__credit-link {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.gate__credit-link:hover {
+  color: var(--color-accent);
 }
 
 /* Responsive adjustments */
@@ -299,8 +333,20 @@
     font-size: calc(11px / var(--mobile-scale));
   }
 
-  .gate__desc {
-    font-size: calc(14px / var(--mobile-scale));
+  .gate__credits {
+    gap: calc(14px / var(--mobile-scale)) calc(20px / var(--mobile-scale));
+  }
+
+  .gate__credit {
+    max-width: 18ch;
+  }
+
+  .gate__credit-label {
+    font-size: calc(9px / var(--mobile-scale));
+  }
+
+  .gate__credit-value {
+    font-size: calc(10px / var(--mobile-scale));
   }
 }
 

@@ -18,7 +18,9 @@
     "mediaLabel": "SAINT REGIS — VISTA AÉREA",
     "eyebrow": "PARCELACIÓN SAINT REGIS",
     "enter": "ENTRAR",
-    "desc": "Diseñado por CNTXT arquitectura en Medellín, Colombia"
+    "creditArchitect": "Arquitecto",
+    "creditBuilders": "Constructores",
+    "creditManagement": "Gerencia y Desarrollo"
   },
   "rotate": {
     "title": "Gira tu dispositivo",

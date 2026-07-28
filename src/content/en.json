@@ -18,7 +18,9 @@
     "mediaLabel": "SAINT REGIS — AERIAL VIEW",
     "eyebrow": "SAINT REGIS ESTATE",
     "enter": "ENTER",
-    "desc": "Designed by CNTXT arquitectura in Medellín, Colombia"
+    "creditArchitect": "Architect",
+    "creditBuilders": "Builders",
+    "creditManagement": "Management & Development"
   },
   "rotate": {
     "title": "Rotate your device",
