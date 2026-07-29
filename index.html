@@ -181,6 +181,12 @@
               alt="Fachada principal de Lake House Nº21"
               data-i18n-fallback="hero.mediaLabel"
             />
+            <img
+              class="media media--hero-night"
+              src="/images/hero/facade-main-night.webp"
+              alt=""
+              aria-hidden="true"
+            />
           </div>
           <div class="hero__scrim"></div>
           <div class="hero__content" data-parallax-layer="text">
@@ -198,7 +204,30 @@
               alt="Lake House Nº21"
               data-i18n-fallback="hero.buildingFallback"
             />
+            <img
+              class="media media--building-night"
+              src="/images/hero/facade-cutout-night.webp"
+              alt=""
+              aria-hidden="true"
+            />
           </div>
+
+          <!-- Day/night mood switch — cross-fades the two media layers
+               above (see hero-mode-toggle.js). Purely cosmetic, no scroll
+               tie-in, so it sits above everything else in the hero. -->
+          <button type="button" class="hero__mode-toggle" id="heroModeToggle" aria-pressed="false" aria-label="Alternar entre día y noche">
+            <span class="hero__mode-toggle-track">
+              <svg class="hero__mode-icon hero__mode-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+              </svg>
+              <svg class="hero__mode-icon hero__mode-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+              <span class="hero__mode-toggle-knob" aria-hidden="true"></span>
+            </span>
+          </button>
+
           <a href="#overview" class="scroll-cue" data-i18n="hero.scrollCue">
             <span>DESLIZA</span>
           </a>

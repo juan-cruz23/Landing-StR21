@@ -12,6 +12,7 @@ import { initI18n } from './js/i18n.js';
 import { initSmoothScroll } from './js/lenis-setup.js';
 import { initScrollAnimations } from './js/scroll-animations.js';
 import { initHeroPin } from './js/hero-pin.js';
+import { initHeroModeToggle } from './js/hero-mode-toggle.js';
 import { initLogoScale } from './js/logo-scale.js';
 import { initGalleryScroll } from './js/gallery-scroll.js';
 import { initSectionTransitions } from './js/section-transitions.js';
@@ -232,6 +233,7 @@ function init() {
     // measured, so the reveal/counter triggers created next don't end up
     // anchored to stale positions.
     initHeroPin();
+    initHeroModeToggle();
     initGalleryScroll();
     initSectionTransitions();
     initScrollAnimations();
