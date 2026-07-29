@@ -72,7 +72,9 @@
     "img6": { "label": "Interior — vista 6" },
     "img7": { "label": "Interior — vista 7" },
     "img8": { "label": "Interior — vista 8" },
-    "img9": { "label": "Interior — vista 9" }
+    "img9": { "label": "Interior — vista 9" },
+    "img10": { "label": "Interior — vista 10" },
+    "img11": { "label": "Interior — vista 11" }
   },
   "location": {
     "badge": "SAINT REGIS",
