@@ -193,25 +193,25 @@
   }
 
   .hero__mode-toggle-track {
-    width: calc(64px / var(--mobile-scale));
-    height: calc(32px / var(--mobile-scale));
-    padding: 0 calc(7px / var(--mobile-scale));
+    width: calc(82px / var(--mobile-scale));
+    height: calc(41px / var(--mobile-scale));
+    padding: 0 calc(9px / var(--mobile-scale));
   }
 
   .hero__mode-toggle-knob {
-    top: calc(3px / var(--mobile-scale));
-    left: calc(3px / var(--mobile-scale));
-    width: calc(24px / var(--mobile-scale));
-    height: calc(24px / var(--mobile-scale));
+    top: calc(5px / var(--mobile-scale));
+    left: calc(5px / var(--mobile-scale));
+    width: calc(31px / var(--mobile-scale));
+    height: calc(31px / var(--mobile-scale));
   }
 
   .hero.is-night .hero__mode-toggle-knob {
-    transform: translateX(calc(32px / var(--mobile-scale)));
+    transform: translateX(calc(41px / var(--mobile-scale)));
   }
 
   .hero__mode-icon {
-    width: calc(15px / var(--mobile-scale));
-    height: calc(15px / var(--mobile-scale));
+    width: calc(19px / var(--mobile-scale));
+    height: calc(19px / var(--mobile-scale));
   }
 }
 
@@ -1456,14 +1456,7 @@
 .agent-card__name {
   font-family: var(--font-display);
   font-size: 1.15rem;
-}
-
-.agent-card__role {
-  font-size: 0.75rem;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin: 0.25rem 0 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .agent-card__detail {
