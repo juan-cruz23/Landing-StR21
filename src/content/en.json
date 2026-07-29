@@ -106,10 +106,8 @@
     "eyebrow": "06 — CONTACT",
     "title": "BOOK YOUR<br>PRIVATE VISIT",
     "text": "Fill out the form and an advisor will contact you within 24 hours.",
-    "agentName": "María Fernanda Ríos",
-    "agentRole": "Real estate advisor",
-    "agentPhone": "+57 300 000 0000",
-    "agentEmail": "contact@lakehouse21.com",
+    "agentName": "Trivius Global SAS.",
+    "agentEmail": "triviusglobal@gmail.com",
     "formName": "Name",
     "formEmail": "Email",
     "formPhone": "Phone",
@@ -117,7 +115,7 @@
     "formSubmit": "SEND",
     "formSending": "Sending…",
     "formSuccess": "Thank you. Your message has been received, we will contact you soon.",
-    "formError": "The form is not connected to a live endpoint yet. Configure it in src/js/contact-form.js."
+    "formError": "There was a problem sending your message. Try again or email us at triviusglobal@gmail.com."
   },
   "specs": {
     "eyebrow": "SPECIFICATIONS",

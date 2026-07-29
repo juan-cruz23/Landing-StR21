@@ -106,10 +106,8 @@
     "eyebrow": "06 — CONTACTO",
     "title": "AGENDA TU<br>VISITA PRIVADA",
     "text": "Completa el formulario y un asesor se pondrá en contacto contigo en menos de 24 horas.",
-    "agentName": "María Fernanda Ríos",
-    "agentRole": "Asesora inmobiliaria",
-    "agentPhone": "+57 300 000 0000",
-    "agentEmail": "contacto@lakehouse21.com",
+    "agentName": "Trivius Global SAS.",
+    "agentEmail": "triviusglobal@gmail.com",
     "formName": "Nombre",
     "formEmail": "Correo electrónico",
     "formPhone": "Teléfono",
@@ -117,7 +115,7 @@
     "formSubmit": "ENVIAR",
     "formSending": "Enviando…",
     "formSuccess": "Gracias. Tu mensaje fue recibido, te contactaremos pronto.",
-    "formError": "El formulario aún no está conectado a un destino real. Configura el endpoint en src/js/contact-form.js."
+    "formError": "Hubo un problema al enviar tu mensaje. Intenta de nuevo o escríbenos a triviusglobal@gmail.com."
   },
   "specs": {
     "eyebrow": "ESPECIFICACIONES",
